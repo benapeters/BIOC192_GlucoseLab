@@ -8,10 +8,9 @@ ui <- fluidPage(
   
   mainPanel(
     tabsetPanel(
-      tabPanel("Exercise 1",
-               rHandsontableOutput("table1")),  
       tabPanel("Exercise 2",
-               rHandsontableOutput("table2")),  
+               rHandsontableOutput("table1")),  
+
     )
   )
 )
@@ -22,23 +21,18 @@ server <- function(input, output) {
   
   # Create initial data for tables
   initial_data1 <- data.frame(
-    X = c(1, 2, 3),
-    Y = c(10, 20, 30)
+    Amount_of_carbs = rep(NA, 2),
+    Before_Snack = rep(NA, 2),
+    '30_Minutes' = rep(NA, 2),
+    '60_Minutes' = rep(NA, 2)
   )
-  
-  initial_data2 <- data.frame(
-    A = c("A", "B", "C"),
-    B = c(100, 200, 300)
-  )
+
   
   # Render tables
   output$table1 <- renderRHandsontable({
     rhandsontable(initial_data1)
   })
-  
-  output$table2 <- renderRHandsontable({
-    rhandsontable(initial_data2)
-  })
+
   
 }
 
